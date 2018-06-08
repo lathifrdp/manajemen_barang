@@ -42,7 +42,7 @@ namespace ManajemenBarang.Areas.Admin.Controllers
 
         public ActionResult EditAction(spGetBarangBaru_Result brg)
         {
-            db.spEditBarang(brg.id_brg, brg.nama_brg, brg.kode_brg, brg.jumlah_brg, brg.id_kat, brg.id_sup, brg.deskripsi_brg);
+            db.spEditBarang(brg.id_brg, brg.nama_brg, brg.kode_brg, brg.jumlah_brg, brg.id_kat, brg.id_sup);
             return RedirectToAction("Index", new { Area = "Admin" });
         }
         
