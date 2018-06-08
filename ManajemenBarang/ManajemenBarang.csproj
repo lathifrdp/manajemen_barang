@@ -203,13 +203,31 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DashboardModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetBarang1_Result.cs">
+      <DependentUpon>DashboardModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetBarangnya1_Result.cs">
+      <DependentUpon>DashboardModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GetBarangnya_Result.cs">
+      <DependentUpon>DashboardModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetBarangSup1_Result.cs">
+      <DependentUpon>DashboardModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetBarangSup21_Result.cs">
       <DependentUpon>DashboardModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GetBarangSup2_Result.cs">
       <DependentUpon>DashboardModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetBarangSup31_Result.cs">
+      <DependentUpon>DashboardModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GetBarangSup3_Result.cs">
+      <DependentUpon>DashboardModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetBarangSup41_Result.cs">
       <DependentUpon>DashboardModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GetBarangSup4_Result.cs">
@@ -218,10 +236,22 @@
     <Compile Include="Models\GetBarangSup_Result.cs">
       <DependentUpon>DashboardModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetBarangWhere1_Result.cs">
+      <DependentUpon>DashboardModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetBarangWhere21_Result.cs">
+      <DependentUpon>DashboardModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GetBarangWhere2_Result.cs">
       <DependentUpon>DashboardModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetBarangWhere31_Result.cs">
+      <DependentUpon>DashboardModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GetBarangWhere3_Result.cs">
+      <DependentUpon>DashboardModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetBarangWhereDist1_Result.cs">
       <DependentUpon>DashboardModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GetBarangWhereDist_Result.cs">
@@ -233,19 +263,40 @@
     <Compile Include="Models\GetBarang_Result.cs">
       <DependentUpon>DashboardModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetCreatedSupplier31_Result.cs">
+      <DependentUpon>DashboardModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GetCreatedSupplier3_Result.cs">
+      <DependentUpon>DashboardModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetCreatedSupplier41_Result.cs">
       <DependentUpon>DashboardModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GetCreatedSupplier4_Result.cs">
       <DependentUpon>DashboardModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetKategori1_Result.cs">
+      <DependentUpon>DashboardModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GetKategori_Result.cs">
+      <DependentUpon>DashboardModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetProfil1_Result.cs">
       <DependentUpon>DashboardModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GetProfil_Result.cs">
       <DependentUpon>DashboardModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetSupplay1_Result.cs">
+      <DependentUpon>DashboardModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GetSupplay_Result.cs">
+      <DependentUpon>DashboardModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetUsup1_Result.cs">
+      <DependentUpon>DashboardModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetUsup21_Result.cs">
       <DependentUpon>DashboardModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GetUsup2_Result.cs">
@@ -257,11 +308,17 @@
     <Compile Include="Models\Kategori.cs">
       <DependentUpon>DashboardModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginUser1_Result.cs">
+      <DependentUpon>DashboardModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LoginUser_Result.cs">
       <DependentUpon>DashboardModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LogModel.cs" />
     <Compile Include="Models\RegModel.cs" />
+    <Compile Include="Models\spGetBarangBaru1_Result.cs">
+      <DependentUpon>DashboardModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\spGetBarangBaru_Result.cs">
       <DependentUpon>DashboardModel.tt</DependentUpon>
     </Compile>
