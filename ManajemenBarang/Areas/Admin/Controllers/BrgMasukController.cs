@@ -1,4 +1,5 @@
 ﻿using ManajemenBarang.Areas.Admin.Models;
+using ManajemenBarang.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace ManajemenBarang.Areas.Admin.Controllers
             return View(list);
         }
 
-        public ActionResult InsertExistAction(spGetBarang_Result brg)
+        public ActionResult InsertExistAction(spGetBarangBaru_Result brg)
         {
             db.spBarangMasukExist(brg.id_brg, brg.tanggal_msk, brg.jumlah_brg, brg.deskripsi_brg, brg.id_pj);
             return RedirectToAction("Index", new { Area = "Admin" });
@@ -40,7 +41,7 @@ namespace ManajemenBarang.Areas.Admin.Controllers
             return View(list);
         }
 
-        public ActionResult InsertNewAction(spGetBarang_Result brg)
+        public ActionResult InsertNewAction(spGetBarangBaru_Result brg)
         {
             //db.spBarangMasukNew(brg.id_brg, brg.id_brg, brg.nama_brg, brg.tanggal_msk, brg.deskripsi_brg, brg.kode_brg);
             db.spBarangMasukNew(brg.id_brg, brg.id_sup, brg.id_kat, brg.nama_brg, brg.tanggal_msk, brg.jumlah_brg, brg.deskripsi_brg, brg.id_pj, brg.kode_brg);
@@ -49,7 +50,7 @@ namespace ManajemenBarang.Areas.Admin.Controllers
 
         public ActionResult Delete(int? id)
         {
-            BarangMasuk result = db.BarangMasuk.Find(id);
+            BarangMasuk result = db.BarangMasuks.Find(id);
             return View(result);
         }
 
@@ -57,8 +58,8 @@ namespace ManajemenBarang.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteAction(int id)
         {
-            BarangMasuk result = db.BarangMasuk.Find(id);
-            db.BarangMasuk.Remove(result);
+            BarangMasuk result = db.BarangMasuks.Find(id);
+            db.BarangMasuks.Remove(result);
             db.SaveChanges();
             return RedirectToAction("Index", "BrgMasuk", new { Area = "Admin" });
         }

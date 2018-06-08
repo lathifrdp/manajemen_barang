@@ -1,4 +1,5 @@
 ﻿using ManajemenBarang.Areas.Admin.Models;
+using ManajemenBarang.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,13 +30,13 @@ namespace ManajemenBarang.Areas.Admin.Controllers
 
         public ActionResult InsertAction(spGetBarangReturn_Result brg)
         {
-            db.spBarangReturn(brg.id_barang, brg.tanggal_return, brg.jum_barang_return, brg.deskripsi, brg.id_supplier, brg.created_by);
+            db.spBarangReturn(brg.id_barang, brg.tanggal_return, brg.jum_barang_return, brg.deskripsi, brg.created_by);
             return RedirectToAction("Index","BrgReturn", new { Area = "Admin" });
         }
 
         public ActionResult Delete(int? id)
         {
-            BarangReturn result = db.BarangReturn.Find(id);
+            BarangReturn result = db.BarangReturns.Find(id);
             return View(result);
         }
 
@@ -43,8 +44,8 @@ namespace ManajemenBarang.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteAction(int id)
         {
-            BarangReturn result = db.BarangReturn.Find(id);
-            db.BarangReturn.Remove(result);
+            BarangReturn result = db.BarangReturns.Find(id);
+            db.BarangReturns.Remove(result);
             db.SaveChanges();
             return RedirectToAction("Index", new { Area = "Admin" });
         }

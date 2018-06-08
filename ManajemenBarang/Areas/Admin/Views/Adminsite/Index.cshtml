@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ManajemenBarang.Areas.Admin.Models.spGetBarangJoin_Result>
+﻿@model IEnumerable<ManajemenBarang.Models.spGetBarangJoin_Result>
 @{
     ViewBag.Title = "Index";
 }
@@ -64,9 +64,9 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.nama_sup)
                     </td>
-                    <td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.deskripsi_brg)
-                    </td>
+                    </td>*@
                     
                     <td>
                         @Html.ActionLink(

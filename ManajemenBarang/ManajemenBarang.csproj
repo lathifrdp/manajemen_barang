@@ -158,6 +158,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminsiteController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BrgKeluarController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BrgMasukController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BrgReturnController.cs" />
+    <Compile Include="Areas\Admin\Models\BarangClass.cs" />
+    <Compile Include="Areas\Admin\Models\ListOptions.cs" />
     <Compile Include="Areas\Supplier\Controllers\SuppliersiteController.cs" />
     <Compile Include="Areas\Supplier\Models\BarangWhere.cs" />
     <Compile Include="Areas\Supplier\Models\InBarang.cs" />
@@ -257,6 +262,9 @@
     </Compile>
     <Compile Include="Models\LogModel.cs" />
     <Compile Include="Models\RegModel.cs" />
+    <Compile Include="Models\spGetBarangBaru_Result.cs">
+      <DependentUpon>DashboardModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\spGetBarangJoinID_Result.cs">
       <DependentUpon>DashboardModel.tt</DependentUpon>
     </Compile>
@@ -355,6 +363,19 @@
     <Content Include="Areas\Supplier\Views\Suppliersite\CreateExist.cshtml" />
     <Content Include="Areas\Supplier\Views\Suppliersite\InsertDataExist.cshtml" />
     <Content Include="Areas\Supplier\Views\Suppliersite\ErrorSession.cshtml" />
+    <Content Include="Areas\Admin\Views\Adminsite\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Adminsite\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Adminsite\Profile.cshtml" />
+    <Content Include="Areas\Admin\Views\BrgKeluar\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\BrgKeluar\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\BrgKeluar\Insert.cshtml" />
+    <Content Include="Areas\Admin\Views\BrgMasuk\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\BrgMasuk\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\BrgMasuk\InsertExist.cshtml" />
+    <Content Include="Areas\Admin\Views\BrgMasuk\InsertNew.cshtml" />
+    <Content Include="Areas\Admin\Views\BrgReturn\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\BrgReturn\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\BrgReturn\Insert.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -389,7 +410,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

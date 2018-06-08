@@ -1,4 +1,5 @@
 ﻿using ManajemenBarang.Areas.Admin.Models;
+using ManajemenBarang.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace ManajemenBarang.Areas.Admin.Controllers
 
         public ActionResult Delete(int? id)
         {
-            BarangKeluar result = db.BarangKeluar.Find(id);
+            BarangKeluar result = db.BarangKeluars.Find(id);
             return View(result);
         }
 
@@ -48,8 +49,8 @@ namespace ManajemenBarang.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteAction(int id)
         {
-            BarangKeluar result = db.BarangKeluar.Find(id);
-            db.BarangKeluar.Remove(result);
+            BarangKeluar result = db.BarangKeluars.Find(id);
+            db.BarangKeluars.Remove(result);
             db.SaveChanges();
             return RedirectToAction("Index","BrgKeluar", new { Area = "Admin" });
         }

@@ -15,7 +15,7 @@ namespace ManajemenBarang.Models
     public partial class Supplier
     {
         public int id_supplier { get; set; }
-        public int id_user { get; set; }
+        public Nullable<int> id_user { get; set; }
         public string nama_supplier { get; set; }
         public string alamat_supplier { get; set; }
         public string telp_supplier { get; set; }

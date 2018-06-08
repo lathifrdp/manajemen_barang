@@ -131,53 +131,45 @@ namespace ManajemenBarang.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetKategori_Result>("GetKategori");
         }
     
-        public virtual int CreateData(Nullable<int> id_kategori, Nullable<int> id_supplier, string kode_barang, string nama_barang, Nullable<int> id_barang, Nullable<int> jumlah_barang, Nullable<System.DateTime> tanggal_masuk, Nullable<int> jum_barang_masuk, Nullable<int> created_by, string deskripsi, Nullable<int> updated_by)
+        public virtual int CreateData(Nullable<int> id_brg, Nullable<int> id_sup, Nullable<int> id_kat, string nama_brg, Nullable<System.DateTime> tgl, Nullable<int> jml, string desc, Nullable<int> created, string kode_brg, ObjectParameter status)
         {
-            var id_kategoriParameter = id_kategori.HasValue ?
-                new ObjectParameter("id_kategori", id_kategori) :
-                new ObjectParameter("id_kategori", typeof(int));
+            var id_brgParameter = id_brg.HasValue ?
+                new ObjectParameter("id_brg", id_brg) :
+                new ObjectParameter("id_brg", typeof(int));
     
-            var id_supplierParameter = id_supplier.HasValue ?
-                new ObjectParameter("id_supplier", id_supplier) :
-                new ObjectParameter("id_supplier", typeof(int));
+            var id_supParameter = id_sup.HasValue ?
+                new ObjectParameter("id_sup", id_sup) :
+                new ObjectParameter("id_sup", typeof(int));
     
-            var kode_barangParameter = kode_barang != null ?
-                new ObjectParameter("kode_barang", kode_barang) :
-                new ObjectParameter("kode_barang", typeof(string));
+            var id_katParameter = id_kat.HasValue ?
+                new ObjectParameter("id_kat", id_kat) :
+                new ObjectParameter("id_kat", typeof(int));
     
-            var nama_barangParameter = nama_barang != null ?
-                new ObjectParameter("nama_barang", nama_barang) :
-                new ObjectParameter("nama_barang", typeof(string));
+            var nama_brgParameter = nama_brg != null ?
+                new ObjectParameter("nama_brg", nama_brg) :
+                new ObjectParameter("nama_brg", typeof(string));
     
-            var id_barangParameter = id_barang.HasValue ?
-                new ObjectParameter("id_barang", id_barang) :
-                new ObjectParameter("id_barang", typeof(int));
+            var tglParameter = tgl.HasValue ?
+                new ObjectParameter("tgl", tgl) :
+                new ObjectParameter("tgl", typeof(System.DateTime));
     
-            var jumlah_barangParameter = jumlah_barang.HasValue ?
-                new ObjectParameter("jumlah_barang", jumlah_barang) :
-                new ObjectParameter("jumlah_barang", typeof(int));
+            var jmlParameter = jml.HasValue ?
+                new ObjectParameter("jml", jml) :
+                new ObjectParameter("jml", typeof(int));
     
-            var tanggal_masukParameter = tanggal_masuk.HasValue ?
-                new ObjectParameter("tanggal_masuk", tanggal_masuk) :
-                new ObjectParameter("tanggal_masuk", typeof(System.DateTime));
+            var descParameter = desc != null ?
+                new ObjectParameter("desc", desc) :
+                new ObjectParameter("desc", typeof(string));
     
-            var jum_barang_masukParameter = jum_barang_masuk.HasValue ?
-                new ObjectParameter("jum_barang_masuk", jum_barang_masuk) :
-                new ObjectParameter("jum_barang_masuk", typeof(int));
+            var createdParameter = created.HasValue ?
+                new ObjectParameter("created", created) :
+                new ObjectParameter("created", typeof(int));
     
-            var created_byParameter = created_by.HasValue ?
-                new ObjectParameter("created_by", created_by) :
-                new ObjectParameter("created_by", typeof(int));
+            var kode_brgParameter = kode_brg != null ?
+                new ObjectParameter("kode_brg", kode_brg) :
+                new ObjectParameter("kode_brg", typeof(string));
     
-            var deskripsiParameter = deskripsi != null ?
-                new ObjectParameter("deskripsi", deskripsi) :
-                new ObjectParameter("deskripsi", typeof(string));
-    
-            var updated_byParameter = updated_by.HasValue ?
-                new ObjectParameter("updated_by", updated_by) :
-                new ObjectParameter("updated_by", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateData", id_kategoriParameter, id_supplierParameter, kode_barangParameter, nama_barangParameter, id_barangParameter, jumlah_barangParameter, tanggal_masukParameter, jum_barang_masukParameter, created_byParameter, deskripsiParameter, updated_byParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateData", id_brgParameter, id_supParameter, id_katParameter, nama_brgParameter, tglParameter, jmlParameter, descParameter, createdParameter, kode_brgParameter, status);
         }
     
         public virtual ObjectResult<GetBarangSup3_Result> GetBarangSup3()
@@ -435,7 +427,7 @@ namespace ManajemenBarang.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spBarangReturn", id_brgParameter, tglParameter, jmlParameter, descParameter, createdParameter);
         }
     
-        public virtual int spEditBarang(Nullable<int> id_brg, string nama_brg, string kode_brg, Nullable<int> jml_brg, Nullable<int> kategori, Nullable<int> supplier)
+        public virtual int spEditBarang(Nullable<int> id_brg, string nama_brg, string kode_brg, Nullable<int> jml_brg, Nullable<int> kategori, Nullable<int> supplier, string deskripsi)
         {
             var id_brgParameter = id_brg.HasValue ?
                 new ObjectParameter("id_brg", id_brg) :
@@ -461,7 +453,11 @@ namespace ManajemenBarang.Models
                 new ObjectParameter("supplier", supplier) :
                 new ObjectParameter("supplier", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spEditBarang", id_brgParameter, nama_brgParameter, kode_brgParameter, jml_brgParameter, kategoriParameter, supplierParameter);
+            var deskripsiParameter = deskripsi != null ?
+                new ObjectParameter("deskripsi", deskripsi) :
+                new ObjectParameter("deskripsi", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spEditBarang", id_brgParameter, nama_brgParameter, kode_brgParameter, jml_brgParameter, kategoriParameter, supplierParameter, deskripsiParameter);
         }
     
         public virtual ObjectResult<spGetBarang_Result> spGetBarang()

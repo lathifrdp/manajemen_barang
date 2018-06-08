@@ -1,4 +1,5 @@
 ﻿using ManajemenBarang.Areas.Admin.Models;
+using ManajemenBarang.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -39,7 +40,7 @@ namespace ManajemenBarang.Areas.Admin.Controllers
             return View(list);
         }
 
-        public ActionResult EditAction(spGetBarang_Result brg)
+        public ActionResult EditAction(spGetBarangBaru_Result brg)
         {
             db.spEditBarang(brg.id_brg, brg.nama_brg, brg.kode_brg, brg.jumlah_brg, brg.id_kat, brg.id_sup, brg.deskripsi_brg);
             return RedirectToAction("Index", new { Area = "Admin" });
@@ -47,7 +48,7 @@ namespace ManajemenBarang.Areas.Admin.Controllers
         
         public ActionResult Delete(int? id)
         {
-            Barang result = db.Barang.Find(id);
+            Barang result = db.Barangs.Find(id);
             return View(result);
         }
 
@@ -55,15 +56,15 @@ namespace ManajemenBarang.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteAction(int id)
         {
-            Barang result = db.Barang.Find(id);
-            db.Barang.Remove(result);
+            Barang result = db.Barangs.Find(id);
+            db.Barangs.Remove(result);
             db.SaveChanges();
             return RedirectToAction("Index", "Adminsite", new { Area = "Admin" });
         }
 
         public ActionResult ProfileSupplier(int id)
         {
-            List < spGetSupplierWhere_Result > result = mod.getSupplierWhere(id);
+            List<spGetSupplierWhere_Result> result = mod.getSupplierWhere(id);
             return View(result);
         }
 
