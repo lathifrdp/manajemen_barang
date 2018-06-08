@@ -546,5 +546,10 @@ namespace ManajemenBarang.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetUser_Result>("spGetUser");
         }
+    
+        public virtual ObjectResult<spGetBarangBaru_Result> spGetBarangBaru()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetBarangBaru_Result>("spGetBarangBaru");
+        }
     }
 }

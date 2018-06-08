@@ -200,6 +200,7 @@
           <Parameter Name="supplier" Type="int" Mode="In" />
         </Function>
         <Function Name="spGetBarang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetBarangBaru" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spGetBarangJoin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spGetBarangJoinID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spGetBarangKeluar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -444,14 +445,15 @@
           <FunctionImport Name="spGetBarangReturn" ReturnType="Collection(dbStokModel.spGetBarangReturn_Result)" />
           <FunctionImport Name="spGetBarangReturnJoin" ReturnType="Collection(dbStokModel.spGetBarangReturnJoin_Result)" />
           <FunctionImport Name="spGetBarangWhere" ReturnType="Collection(dbStokModel.spGetBarangWhere_Result)">
-            <Parameter Name="id_brg" Mode="In" Type="Int32" />
+          <Parameter Name="id_brg" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetKategori" ReturnType="Collection(dbStokModel.spGetKategori_Result)" />
           <FunctionImport Name="spGetSupplier" ReturnType="Collection(dbStokModel.spGetSupplier_Result)" />
           <FunctionImport Name="spGetSupplierWhere" ReturnType="Collection(dbStokModel.spGetSupplierWhere_Result)">
-            <Parameter Name="id_sup" Mode="In" Type="Int32" />
+          <Parameter Name="id_sup" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetUser" ReturnType="Collection(dbStokModel.spGetUser_Result)" />
+          <FunctionImport Name="spGetBarangBaru" ReturnType="Collection(dbStokModel.spGetBarangBaru_Result)" />
         </EntityContainer>
         <ComplexType Name="GetUsup_Result">
           <Property Type="Int32" Name="id_user" Nullable="false" />
@@ -877,6 +879,17 @@
           <Property Type="String" Name="username" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="password" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="status_user" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetBarangBaru_Result">
+          <Property Type="Int32" Name="id_brg" Nullable="false" />
+          <Property Type="String" Name="kode_brg" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="nama_brg" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="jumlah_brg" Nullable="false" />
+          <Property Type="Int32" Name="id_kat" Nullable="true" />
+          <Property Type="String" Name="deskripsi_brg" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="id_sup" Nullable="true" />
+          <Property Type="DateTime" Name="tanggal_msk" Nullable="true" />
+          <Property Type="Int32" Name="id_pj" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1530,6 +1543,21 @@
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="status_user" ColumnName="status_user" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetBarangBaru" FunctionName="dbStokModel.Store.spGetBarangBaru">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbStokModel.spGetBarangBaru_Result">
+                <ScalarProperty Name="id_brg" ColumnName="id_brg" />
+                <ScalarProperty Name="kode_brg" ColumnName="kode_brg" />
+                <ScalarProperty Name="nama_brg" ColumnName="nama_brg" />
+                <ScalarProperty Name="jumlah_brg" ColumnName="jumlah_brg" />
+                <ScalarProperty Name="id_kat" ColumnName="id_kat" />
+                <ScalarProperty Name="deskripsi_brg" ColumnName="deskripsi_brg" />
+                <ScalarProperty Name="id_sup" ColumnName="id_sup" />
+                <ScalarProperty Name="tanggal_msk" ColumnName="tanggal_msk" />
+                <ScalarProperty Name="id_pj" ColumnName="id_pj" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
