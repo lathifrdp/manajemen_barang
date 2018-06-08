@@ -318,5 +318,233 @@ namespace ManajemenBarang.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCreatedSupplier4_Result>("GetCreatedSupplier4", id_supplierParameter, id_userParameter);
         }
+    
+        public virtual int spBarangKeluar(Nullable<int> id_brg, Nullable<System.DateTime> tgl, Nullable<int> jml, string desc, Nullable<int> created)
+        {
+            var id_brgParameter = id_brg.HasValue ?
+                new ObjectParameter("id_brg", id_brg) :
+                new ObjectParameter("id_brg", typeof(int));
+    
+            var tglParameter = tgl.HasValue ?
+                new ObjectParameter("tgl", tgl) :
+                new ObjectParameter("tgl", typeof(System.DateTime));
+    
+            var jmlParameter = jml.HasValue ?
+                new ObjectParameter("jml", jml) :
+                new ObjectParameter("jml", typeof(int));
+    
+            var descParameter = desc != null ?
+                new ObjectParameter("desc", desc) :
+                new ObjectParameter("desc", typeof(string));
+    
+            var createdParameter = created.HasValue ?
+                new ObjectParameter("created", created) :
+                new ObjectParameter("created", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spBarangKeluar", id_brgParameter, tglParameter, jmlParameter, descParameter, createdParameter);
+        }
+    
+        public virtual int spBarangMasukExist(Nullable<int> id_brg, Nullable<System.DateTime> tgl, Nullable<int> jml, string desc, Nullable<int> created)
+        {
+            var id_brgParameter = id_brg.HasValue ?
+                new ObjectParameter("id_brg", id_brg) :
+                new ObjectParameter("id_brg", typeof(int));
+    
+            var tglParameter = tgl.HasValue ?
+                new ObjectParameter("tgl", tgl) :
+                new ObjectParameter("tgl", typeof(System.DateTime));
+    
+            var jmlParameter = jml.HasValue ?
+                new ObjectParameter("jml", jml) :
+                new ObjectParameter("jml", typeof(int));
+    
+            var descParameter = desc != null ?
+                new ObjectParameter("desc", desc) :
+                new ObjectParameter("desc", typeof(string));
+    
+            var createdParameter = created.HasValue ?
+                new ObjectParameter("created", created) :
+                new ObjectParameter("created", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spBarangMasukExist", id_brgParameter, tglParameter, jmlParameter, descParameter, createdParameter);
+        }
+    
+        public virtual int spBarangMasukNew(Nullable<int> id_brg, Nullable<int> id_sup, Nullable<int> id_kat, string nama_brg, Nullable<System.DateTime> tgl, Nullable<int> jml, string desc, Nullable<int> created, string kode_brg)
+        {
+            var id_brgParameter = id_brg.HasValue ?
+                new ObjectParameter("id_brg", id_brg) :
+                new ObjectParameter("id_brg", typeof(int));
+    
+            var id_supParameter = id_sup.HasValue ?
+                new ObjectParameter("id_sup", id_sup) :
+                new ObjectParameter("id_sup", typeof(int));
+    
+            var id_katParameter = id_kat.HasValue ?
+                new ObjectParameter("id_kat", id_kat) :
+                new ObjectParameter("id_kat", typeof(int));
+    
+            var nama_brgParameter = nama_brg != null ?
+                new ObjectParameter("nama_brg", nama_brg) :
+                new ObjectParameter("nama_brg", typeof(string));
+    
+            var tglParameter = tgl.HasValue ?
+                new ObjectParameter("tgl", tgl) :
+                new ObjectParameter("tgl", typeof(System.DateTime));
+    
+            var jmlParameter = jml.HasValue ?
+                new ObjectParameter("jml", jml) :
+                new ObjectParameter("jml", typeof(int));
+    
+            var descParameter = desc != null ?
+                new ObjectParameter("desc", desc) :
+                new ObjectParameter("desc", typeof(string));
+    
+            var createdParameter = created.HasValue ?
+                new ObjectParameter("created", created) :
+                new ObjectParameter("created", typeof(int));
+    
+            var kode_brgParameter = kode_brg != null ?
+                new ObjectParameter("kode_brg", kode_brg) :
+                new ObjectParameter("kode_brg", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spBarangMasukNew", id_brgParameter, id_supParameter, id_katParameter, nama_brgParameter, tglParameter, jmlParameter, descParameter, createdParameter, kode_brgParameter);
+        }
+    
+        public virtual int spBarangReturn(Nullable<int> id_brg, Nullable<System.DateTime> tgl, Nullable<int> jml, string desc, Nullable<int> created)
+        {
+            var id_brgParameter = id_brg.HasValue ?
+                new ObjectParameter("id_brg", id_brg) :
+                new ObjectParameter("id_brg", typeof(int));
+    
+            var tglParameter = tgl.HasValue ?
+                new ObjectParameter("tgl", tgl) :
+                new ObjectParameter("tgl", typeof(System.DateTime));
+    
+            var jmlParameter = jml.HasValue ?
+                new ObjectParameter("jml", jml) :
+                new ObjectParameter("jml", typeof(int));
+    
+            var descParameter = desc != null ?
+                new ObjectParameter("desc", desc) :
+                new ObjectParameter("desc", typeof(string));
+    
+            var createdParameter = created.HasValue ?
+                new ObjectParameter("created", created) :
+                new ObjectParameter("created", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spBarangReturn", id_brgParameter, tglParameter, jmlParameter, descParameter, createdParameter);
+        }
+    
+        public virtual int spEditBarang(Nullable<int> id_brg, string nama_brg, string kode_brg, Nullable<int> jml_brg, Nullable<int> kategori, Nullable<int> supplier)
+        {
+            var id_brgParameter = id_brg.HasValue ?
+                new ObjectParameter("id_brg", id_brg) :
+                new ObjectParameter("id_brg", typeof(int));
+    
+            var nama_brgParameter = nama_brg != null ?
+                new ObjectParameter("nama_brg", nama_brg) :
+                new ObjectParameter("nama_brg", typeof(string));
+    
+            var kode_brgParameter = kode_brg != null ?
+                new ObjectParameter("kode_brg", kode_brg) :
+                new ObjectParameter("kode_brg", typeof(string));
+    
+            var jml_brgParameter = jml_brg.HasValue ?
+                new ObjectParameter("jml_brg", jml_brg) :
+                new ObjectParameter("jml_brg", typeof(int));
+    
+            var kategoriParameter = kategori.HasValue ?
+                new ObjectParameter("kategori", kategori) :
+                new ObjectParameter("kategori", typeof(int));
+    
+            var supplierParameter = supplier.HasValue ?
+                new ObjectParameter("supplier", supplier) :
+                new ObjectParameter("supplier", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spEditBarang", id_brgParameter, nama_brgParameter, kode_brgParameter, jml_brgParameter, kategoriParameter, supplierParameter);
+        }
+    
+        public virtual ObjectResult<spGetBarang_Result> spGetBarang()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetBarang_Result>("spGetBarang");
+        }
+    
+        public virtual ObjectResult<spGetBarangJoin_Result> spGetBarangJoin()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetBarangJoin_Result>("spGetBarangJoin");
+        }
+    
+        public virtual ObjectResult<spGetBarangJoinID_Result> spGetBarangJoinID()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetBarangJoinID_Result>("spGetBarangJoinID");
+        }
+    
+        public virtual ObjectResult<spGetBarangKeluar_Result> spGetBarangKeluar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetBarangKeluar_Result>("spGetBarangKeluar");
+        }
+    
+        public virtual ObjectResult<spGetBarangKeluarJoin_Result> spGetBarangKeluarJoin()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetBarangKeluarJoin_Result>("spGetBarangKeluarJoin");
+        }
+    
+        public virtual ObjectResult<spGetBarangList_Result> spGetBarangList()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetBarangList_Result>("spGetBarangList");
+        }
+    
+        public virtual ObjectResult<spGetBarangMasuk_Result> spGetBarangMasuk()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetBarangMasuk_Result>("spGetBarangMasuk");
+        }
+    
+        public virtual ObjectResult<spGetBarangMasukJoin_Result> spGetBarangMasukJoin()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetBarangMasukJoin_Result>("spGetBarangMasukJoin");
+        }
+    
+        public virtual ObjectResult<spGetBarangReturn_Result> spGetBarangReturn()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetBarangReturn_Result>("spGetBarangReturn");
+        }
+    
+        public virtual ObjectResult<spGetBarangReturnJoin_Result> spGetBarangReturnJoin()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetBarangReturnJoin_Result>("spGetBarangReturnJoin");
+        }
+    
+        public virtual ObjectResult<spGetBarangWhere_Result> spGetBarangWhere(Nullable<int> id_brg)
+        {
+            var id_brgParameter = id_brg.HasValue ?
+                new ObjectParameter("id_brg", id_brg) :
+                new ObjectParameter("id_brg", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetBarangWhere_Result>("spGetBarangWhere", id_brgParameter);
+        }
+    
+        public virtual ObjectResult<spGetKategori_Result> spGetKategori()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetKategori_Result>("spGetKategori");
+        }
+    
+        public virtual ObjectResult<spGetSupplier_Result> spGetSupplier()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetSupplier_Result>("spGetSupplier");
+        }
+    
+        public virtual ObjectResult<spGetSupplierWhere_Result> spGetSupplierWhere(Nullable<int> id_sup)
+        {
+            var id_supParameter = id_sup.HasValue ?
+                new ObjectParameter("id_sup", id_sup) :
+                new ObjectParameter("id_sup", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetSupplierWhere_Result>("spGetSupplierWhere", id_supParameter);
+        }
+    
+        public virtual ObjectResult<spGetUser_Result> spGetUser()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetUser_Result>("spGetUser");
+        }
     }
 }
