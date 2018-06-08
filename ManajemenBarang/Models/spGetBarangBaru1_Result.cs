@@ -10,16 +10,17 @@
 namespace ManajemenBarang.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class BarangMasuk
+    public partial class spGetBarangBaru1_Result
     {
-        public int id_barang_masuk { get; set; }
-        public int id_barang { get; set; }
-        public System.DateTime tanggal_masuk { get; set; }
-        public int jum_barang_masuk { get; set; }
-        public string deskripsi { get; set; }
-        public Nullable<int> created_by { get; set; }
-        public Nullable<int> updated_by { get; set; }
+        public int id_brg { get; set; }
+        public string kode_brg { get; set; }
+        public string nama_brg { get; set; }
+        public int jumlah_brg { get; set; }
+        public Nullable<int> id_kat { get; set; }
+        public string deskripsi_brg { get; set; }
+        public Nullable<int> id_sup { get; set; }
+        public Nullable<System.DateTime> tanggal_msk { get; set; }
+        public Nullable<int> id_pj { get; set; }
     }
 }

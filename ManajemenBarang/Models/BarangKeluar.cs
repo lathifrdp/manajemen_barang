@@ -15,9 +15,9 @@ namespace ManajemenBarang.Models
     public partial class BarangKeluar
     {
         public int id_barang_keluar { get; set; }
-        public Nullable<int> id_barang { get; set; }
-        public Nullable<System.DateTime> tanggal_keluar { get; set; }
-        public Nullable<int> jum_barang_keluar { get; set; }
+        public int id_barang { get; set; }
+        public System.DateTime tanggal_keluar { get; set; }
+        public int jum_barang_keluar { get; set; }
         public string deskripsi { get; set; }
         public Nullable<int> created_by { get; set; }
         public Nullable<int> updated_by { get; set; }

@@ -60,7 +60,7 @@ namespace ManajemenBarang.Areas.Supplier.Controllers
         public ActionResult InsertData(GetBarangSup2_Result br)
         {
             dbStokEntities dbe = new dbStokEntities();
-            //dbe.CreateData(br.id_kategori, br.id_supplier, br.kode_barang, br.nama_barang, br.id_barang, br.jumlah_barang, br.tanggal_masuk, br.jum_barang_masuk, br.created_masuk, br.deskripsi, br.updated_masuk);
+            dbe.CreateData2(br.id_kategori, br.id_supplier, br.kode_barang, br.nama_barang, br.id_barang, br.jumlah_barang, br.tanggal_masuk, br.jum_barang_masuk, br.created_masuk, br.deskripsi, br.updated_masuk);
             return View("InsertData");
         }
         public ActionResult InsertDataExist(GetBarangSup2_Result br)

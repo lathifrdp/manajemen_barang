@@ -131,45 +131,53 @@ namespace ManajemenBarang.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetKategori_Result>("GetKategori");
         }
     
-        public virtual int CreateData(Nullable<int> id_brg, Nullable<int> id_sup, Nullable<int> id_kat, string nama_brg, Nullable<System.DateTime> tgl, Nullable<int> jml, string desc, Nullable<int> created, string kode_brg, ObjectParameter status)
+        public virtual int CreateData(Nullable<int> id_kategori, Nullable<int> id_supplier, string kode_barang, string nama_barang, Nullable<int> id_barang, Nullable<int> jumlah_barang, Nullable<System.DateTime> tanggal_masuk, Nullable<int> jum_barang_masuk, Nullable<int> created_by, string deskripsi, Nullable<int> updated_by)
         {
-            var id_brgParameter = id_brg.HasValue ?
-                new ObjectParameter("id_brg", id_brg) :
-                new ObjectParameter("id_brg", typeof(int));
+            var id_kategoriParameter = id_kategori.HasValue ?
+                new ObjectParameter("id_kategori", id_kategori) :
+                new ObjectParameter("id_kategori", typeof(int));
     
-            var id_supParameter = id_sup.HasValue ?
-                new ObjectParameter("id_sup", id_sup) :
-                new ObjectParameter("id_sup", typeof(int));
+            var id_supplierParameter = id_supplier.HasValue ?
+                new ObjectParameter("id_supplier", id_supplier) :
+                new ObjectParameter("id_supplier", typeof(int));
     
-            var id_katParameter = id_kat.HasValue ?
-                new ObjectParameter("id_kat", id_kat) :
-                new ObjectParameter("id_kat", typeof(int));
+            var kode_barangParameter = kode_barang != null ?
+                new ObjectParameter("kode_barang", kode_barang) :
+                new ObjectParameter("kode_barang", typeof(string));
     
-            var nama_brgParameter = nama_brg != null ?
-                new ObjectParameter("nama_brg", nama_brg) :
-                new ObjectParameter("nama_brg", typeof(string));
+            var nama_barangParameter = nama_barang != null ?
+                new ObjectParameter("nama_barang", nama_barang) :
+                new ObjectParameter("nama_barang", typeof(string));
     
-            var tglParameter = tgl.HasValue ?
-                new ObjectParameter("tgl", tgl) :
-                new ObjectParameter("tgl", typeof(System.DateTime));
+            var id_barangParameter = id_barang.HasValue ?
+                new ObjectParameter("id_barang", id_barang) :
+                new ObjectParameter("id_barang", typeof(int));
     
-            var jmlParameter = jml.HasValue ?
-                new ObjectParameter("jml", jml) :
-                new ObjectParameter("jml", typeof(int));
+            var jumlah_barangParameter = jumlah_barang.HasValue ?
+                new ObjectParameter("jumlah_barang", jumlah_barang) :
+                new ObjectParameter("jumlah_barang", typeof(int));
     
-            var descParameter = desc != null ?
-                new ObjectParameter("desc", desc) :
-                new ObjectParameter("desc", typeof(string));
+            var tanggal_masukParameter = tanggal_masuk.HasValue ?
+                new ObjectParameter("tanggal_masuk", tanggal_masuk) :
+                new ObjectParameter("tanggal_masuk", typeof(System.DateTime));
     
-            var createdParameter = created.HasValue ?
-                new ObjectParameter("created", created) :
-                new ObjectParameter("created", typeof(int));
+            var jum_barang_masukParameter = jum_barang_masuk.HasValue ?
+                new ObjectParameter("jum_barang_masuk", jum_barang_masuk) :
+                new ObjectParameter("jum_barang_masuk", typeof(int));
     
-            var kode_brgParameter = kode_brg != null ?
-                new ObjectParameter("kode_brg", kode_brg) :
-                new ObjectParameter("kode_brg", typeof(string));
+            var created_byParameter = created_by.HasValue ?
+                new ObjectParameter("created_by", created_by) :
+                new ObjectParameter("created_by", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateData", id_brgParameter, id_supParameter, id_katParameter, nama_brgParameter, tglParameter, jmlParameter, descParameter, createdParameter, kode_brgParameter, status);
+            var deskripsiParameter = deskripsi != null ?
+                new ObjectParameter("deskripsi", deskripsi) :
+                new ObjectParameter("deskripsi", typeof(string));
+    
+            var updated_byParameter = updated_by.HasValue ?
+                new ObjectParameter("updated_by", updated_by) :
+                new ObjectParameter("updated_by", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateData", id_kategoriParameter, id_supplierParameter, kode_barangParameter, nama_barangParameter, id_barangParameter, jumlah_barangParameter, tanggal_masukParameter, jum_barang_masukParameter, created_byParameter, deskripsiParameter, updated_byParameter);
         }
     
         public virtual ObjectResult<GetBarangSup3_Result> GetBarangSup3()
@@ -427,7 +435,7 @@ namespace ManajemenBarang.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spBarangReturn", id_brgParameter, tglParameter, jmlParameter, descParameter, createdParameter);
         }
     
-        public virtual int spEditBarang(Nullable<int> id_brg, string nama_brg, string kode_brg, Nullable<int> jml_brg, Nullable<int> kategori, Nullable<int> supplier, string deskripsi)
+        public virtual int spEditBarang(Nullable<int> id_brg, string nama_brg, string kode_brg, Nullable<int> jml_brg, Nullable<int> kategori, Nullable<int> supplier)
         {
             var id_brgParameter = id_brg.HasValue ?
                 new ObjectParameter("id_brg", id_brg) :
@@ -453,11 +461,7 @@ namespace ManajemenBarang.Models
                 new ObjectParameter("supplier", supplier) :
                 new ObjectParameter("supplier", typeof(int));
     
-            var deskripsiParameter = deskripsi != null ?
-                new ObjectParameter("deskripsi", deskripsi) :
-                new ObjectParameter("deskripsi", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spEditBarang", id_brgParameter, nama_brgParameter, kode_brgParameter, jml_brgParameter, kategoriParameter, supplierParameter, deskripsiParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spEditBarang", id_brgParameter, nama_brgParameter, kode_brgParameter, jml_brgParameter, kategoriParameter, supplierParameter);
         }
     
         public virtual ObjectResult<spGetBarang_Result> spGetBarang()
@@ -546,6 +550,295 @@ namespace ManajemenBarang.Models
         public virtual ObjectResult<spGetBarangBaru_Result> spGetBarangBaru()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetBarangBaru_Result>("spGetBarangBaru");
+        }
+    
+        public virtual int AddSupplier1(Nullable<int> id_user, string nama_supplier, string alamat_supplier, string telp_supplier)
+        {
+            var id_userParameter = id_user.HasValue ?
+                new ObjectParameter("id_user", id_user) :
+                new ObjectParameter("id_user", typeof(int));
+    
+            var nama_supplierParameter = nama_supplier != null ?
+                new ObjectParameter("nama_supplier", nama_supplier) :
+                new ObjectParameter("nama_supplier", typeof(string));
+    
+            var alamat_supplierParameter = alamat_supplier != null ?
+                new ObjectParameter("alamat_supplier", alamat_supplier) :
+                new ObjectParameter("alamat_supplier", typeof(string));
+    
+            var telp_supplierParameter = telp_supplier != null ?
+                new ObjectParameter("telp_supplier", telp_supplier) :
+                new ObjectParameter("telp_supplier", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddSupplier1", id_userParameter, nama_supplierParameter, alamat_supplierParameter, telp_supplierParameter);
+        }
+    
+        public virtual int AddUser1(Nullable<int> id_user, string username, string password, Nullable<int> status_user, string nama_supplier, string alamat_supplier, string telp_supplier)
+        {
+            var id_userParameter = id_user.HasValue ?
+                new ObjectParameter("id_user", id_user) :
+                new ObjectParameter("id_user", typeof(int));
+    
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
+    
+            var status_userParameter = status_user.HasValue ?
+                new ObjectParameter("status_user", status_user) :
+                new ObjectParameter("status_user", typeof(int));
+    
+            var nama_supplierParameter = nama_supplier != null ?
+                new ObjectParameter("nama_supplier", nama_supplier) :
+                new ObjectParameter("nama_supplier", typeof(string));
+    
+            var alamat_supplierParameter = alamat_supplier != null ?
+                new ObjectParameter("alamat_supplier", alamat_supplier) :
+                new ObjectParameter("alamat_supplier", typeof(string));
+    
+            var telp_supplierParameter = telp_supplier != null ?
+                new ObjectParameter("telp_supplier", telp_supplier) :
+                new ObjectParameter("telp_supplier", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddUser1", id_userParameter, usernameParameter, passwordParameter, status_userParameter, nama_supplierParameter, alamat_supplierParameter, telp_supplierParameter);
+        }
+    
+        public virtual int CreateData2(Nullable<int> id_kategori, Nullable<int> id_supplier, string kode_barang, string nama_barang, Nullable<int> id_barang, Nullable<int> jumlah_barang, Nullable<System.DateTime> tanggal_masuk, Nullable<int> jum_barang_masuk, Nullable<int> created_by, string deskripsi, Nullable<int> updated_by)
+        {
+            var id_kategoriParameter = id_kategori.HasValue ?
+                new ObjectParameter("id_kategori", id_kategori) :
+                new ObjectParameter("id_kategori", typeof(int));
+    
+            var id_supplierParameter = id_supplier.HasValue ?
+                new ObjectParameter("id_supplier", id_supplier) :
+                new ObjectParameter("id_supplier", typeof(int));
+    
+            var kode_barangParameter = kode_barang != null ?
+                new ObjectParameter("kode_barang", kode_barang) :
+                new ObjectParameter("kode_barang", typeof(string));
+    
+            var nama_barangParameter = nama_barang != null ?
+                new ObjectParameter("nama_barang", nama_barang) :
+                new ObjectParameter("nama_barang", typeof(string));
+    
+            var id_barangParameter = id_barang.HasValue ?
+                new ObjectParameter("id_barang", id_barang) :
+                new ObjectParameter("id_barang", typeof(int));
+    
+            var jumlah_barangParameter = jumlah_barang.HasValue ?
+                new ObjectParameter("jumlah_barang", jumlah_barang) :
+                new ObjectParameter("jumlah_barang", typeof(int));
+    
+            var tanggal_masukParameter = tanggal_masuk.HasValue ?
+                new ObjectParameter("tanggal_masuk", tanggal_masuk) :
+                new ObjectParameter("tanggal_masuk", typeof(System.DateTime));
+    
+            var jum_barang_masukParameter = jum_barang_masuk.HasValue ?
+                new ObjectParameter("jum_barang_masuk", jum_barang_masuk) :
+                new ObjectParameter("jum_barang_masuk", typeof(int));
+    
+            var created_byParameter = created_by.HasValue ?
+                new ObjectParameter("created_by", created_by) :
+                new ObjectParameter("created_by", typeof(int));
+    
+            var deskripsiParameter = deskripsi != null ?
+                new ObjectParameter("deskripsi", deskripsi) :
+                new ObjectParameter("deskripsi", typeof(string));
+    
+            var updated_byParameter = updated_by.HasValue ?
+                new ObjectParameter("updated_by", updated_by) :
+                new ObjectParameter("updated_by", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateData2", id_kategoriParameter, id_supplierParameter, kode_barangParameter, nama_barangParameter, id_barangParameter, jumlah_barangParameter, tanggal_masukParameter, jum_barang_masukParameter, created_byParameter, deskripsiParameter, updated_byParameter);
+        }
+    
+        public virtual int CreateDataExist1(Nullable<int> id_barang, Nullable<System.DateTime> tanggal_masuk, Nullable<int> jumlah_barang, string deskripsi, Nullable<int> created_by, Nullable<int> id_supplier)
+        {
+            var id_barangParameter = id_barang.HasValue ?
+                new ObjectParameter("id_barang", id_barang) :
+                new ObjectParameter("id_barang", typeof(int));
+    
+            var tanggal_masukParameter = tanggal_masuk.HasValue ?
+                new ObjectParameter("tanggal_masuk", tanggal_masuk) :
+                new ObjectParameter("tanggal_masuk", typeof(System.DateTime));
+    
+            var jumlah_barangParameter = jumlah_barang.HasValue ?
+                new ObjectParameter("jumlah_barang", jumlah_barang) :
+                new ObjectParameter("jumlah_barang", typeof(int));
+    
+            var deskripsiParameter = deskripsi != null ?
+                new ObjectParameter("deskripsi", deskripsi) :
+                new ObjectParameter("deskripsi", typeof(string));
+    
+            var created_byParameter = created_by.HasValue ?
+                new ObjectParameter("created_by", created_by) :
+                new ObjectParameter("created_by", typeof(int));
+    
+            var id_supplierParameter = id_supplier.HasValue ?
+                new ObjectParameter("id_supplier", id_supplier) :
+                new ObjectParameter("id_supplier", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateDataExist1", id_barangParameter, tanggal_masukParameter, jumlah_barangParameter, deskripsiParameter, created_byParameter, id_supplierParameter);
+        }
+    
+        public virtual ObjectResult<GetBarang1_Result> GetBarang1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBarang1_Result>("GetBarang1");
+        }
+    
+        public virtual ObjectResult<GetBarangnya1_Result> GetBarangnya1(string id_supplier)
+        {
+            var id_supplierParameter = id_supplier != null ?
+                new ObjectParameter("id_supplier", id_supplier) :
+                new ObjectParameter("id_supplier", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBarangnya1_Result>("GetBarangnya1", id_supplierParameter);
+        }
+    
+        public virtual ObjectResult<GetBarangSup1_Result> GetBarangSup1(Nullable<int> id_supplier)
+        {
+            var id_supplierParameter = id_supplier.HasValue ?
+                new ObjectParameter("id_supplier", id_supplier) :
+                new ObjectParameter("id_supplier", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBarangSup1_Result>("GetBarangSup1", id_supplierParameter);
+        }
+    
+        public virtual ObjectResult<GetBarangSup21_Result> GetBarangSup21()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBarangSup21_Result>("GetBarangSup21");
+        }
+    
+        public virtual ObjectResult<GetBarangSup31_Result> GetBarangSup31()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBarangSup31_Result>("GetBarangSup31");
+        }
+    
+        public virtual ObjectResult<GetBarangSup41_Result> GetBarangSup41()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBarangSup41_Result>("GetBarangSup41");
+        }
+    
+        public virtual ObjectResult<GetBarangWhere1_Result> GetBarangWhere1(Nullable<int> id_supplier)
+        {
+            var id_supplierParameter = id_supplier.HasValue ?
+                new ObjectParameter("id_supplier", id_supplier) :
+                new ObjectParameter("id_supplier", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBarangWhere1_Result>("GetBarangWhere1", id_supplierParameter);
+        }
+    
+        public virtual ObjectResult<GetBarangWhere21_Result> GetBarangWhere21(string id_supplier)
+        {
+            var id_supplierParameter = id_supplier != null ?
+                new ObjectParameter("id_supplier", id_supplier) :
+                new ObjectParameter("id_supplier", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBarangWhere21_Result>("GetBarangWhere21", id_supplierParameter);
+        }
+    
+        public virtual ObjectResult<GetBarangWhere31_Result> GetBarangWhere31(string id_supplier)
+        {
+            var id_supplierParameter = id_supplier != null ?
+                new ObjectParameter("id_supplier", id_supplier) :
+                new ObjectParameter("id_supplier", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBarangWhere31_Result>("GetBarangWhere31", id_supplierParameter);
+        }
+    
+        public virtual ObjectResult<GetBarangWhereDist1_Result> GetBarangWhereDist1(string id_supplier)
+        {
+            var id_supplierParameter = id_supplier != null ?
+                new ObjectParameter("id_supplier", id_supplier) :
+                new ObjectParameter("id_supplier", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBarangWhereDist1_Result>("GetBarangWhereDist1", id_supplierParameter);
+        }
+    
+        public virtual ObjectResult<string> GetCreatedSupplier1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetCreatedSupplier1");
+        }
+    
+        public virtual ObjectResult<string> GetCreatedSupplier21(string id_supplier)
+        {
+            var id_supplierParameter = id_supplier != null ?
+                new ObjectParameter("id_supplier", id_supplier) :
+                new ObjectParameter("id_supplier", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetCreatedSupplier21", id_supplierParameter);
+        }
+    
+        public virtual ObjectResult<GetCreatedSupplier31_Result> GetCreatedSupplier31(string id_supplier)
+        {
+            var id_supplierParameter = id_supplier != null ?
+                new ObjectParameter("id_supplier", id_supplier) :
+                new ObjectParameter("id_supplier", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCreatedSupplier31_Result>("GetCreatedSupplier31", id_supplierParameter);
+        }
+    
+        public virtual ObjectResult<GetCreatedSupplier41_Result> GetCreatedSupplier41(string id_supplier, Nullable<int> id_user)
+        {
+            var id_supplierParameter = id_supplier != null ?
+                new ObjectParameter("id_supplier", id_supplier) :
+                new ObjectParameter("id_supplier", typeof(string));
+    
+            var id_userParameter = id_user.HasValue ?
+                new ObjectParameter("id_user", id_user) :
+                new ObjectParameter("id_user", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCreatedSupplier41_Result>("GetCreatedSupplier41", id_supplierParameter, id_userParameter);
+        }
+    
+        public virtual ObjectResult<GetKategori1_Result> GetKategori1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetKategori1_Result>("GetKategori1");
+        }
+    
+        public virtual ObjectResult<GetProfil1_Result> GetProfil1(string id_supplier)
+        {
+            var id_supplierParameter = id_supplier != null ?
+                new ObjectParameter("id_supplier", id_supplier) :
+                new ObjectParameter("id_supplier", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProfil1_Result>("GetProfil1", id_supplierParameter);
+        }
+    
+        public virtual ObjectResult<GetSupplay1_Result> GetSupplay1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSupplay1_Result>("GetSupplay1");
+        }
+    
+        public virtual ObjectResult<GetUsup1_Result> GetUsup1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUsup1_Result>("GetUsup1");
+        }
+    
+        public virtual ObjectResult<GetUsup21_Result> GetUsup21()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUsup21_Result>("GetUsup21");
+        }
+    
+        public virtual ObjectResult<LoginUser1_Result> LoginUser1(string username, string password)
+        {
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LoginUser1_Result>("LoginUser1", usernameParameter, passwordParameter);
+        }
+    
+        public virtual ObjectResult<spGetBarangBaru1_Result> spGetBarangBaru1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetBarangBaru1_Result>("spGetBarangBaru1");
         }
     }
 }
