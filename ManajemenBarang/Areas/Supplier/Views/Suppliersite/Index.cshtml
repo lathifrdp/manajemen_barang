@@ -1,0 +1,111 @@
+﻿@model ManajemenBarang.Areas.Supplier.Models.ViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Supplier</h2>
+<!-- <p style="margin-left:20px;float:right;margin-right:20px;">
+    @*Html.RouteLink("Logout", "Default", new { action = "Login", controller = "Dashboard" })*@
+</p> -->
+<!--<p style="margin-left:20px;float:right;margin-right:20px;">
+    @*Html.ActionLink("Logout", "Logout")*@
+</p>-->
+@if (Session["SupID"] != null)
+{<text> Selamat Datang @Session["SupName"].ToString() </text>}
+<!--<p>
+    @Html.ActionLink("Tambah Data", "Insert")
+
+</p>-->
+<br />
+<br />
+<form style="float:right">
+    <ul class="nav navbar-nav navbar-left">
+        <li>
+            <div class="btn-group">
+                <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">Tambah Data <div class="caret"></div></button>
+                <!-- dropdown menu items-->
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="@Url.Action("Insert","Suppliersite", new { Area = "Supplier" })"><span class="glyphicon glyphicon-plus"></span> Tambah Data Baru</a></li>
+                    <li><a href="@Url.Action("InsertExist","Suppliersite", new { Area = "Supplier" })"><span class="glyphicon glyphicon-pencil"></span> Tambah Data Existing</a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nama Barang
+            </th>
+            <th>
+                Kategori
+            </th>
+            <th>
+                Total Barang
+            </th>
+            <th>
+                Jumlah Barang Masuk
+            </th>
+            <th>
+                Tanggal Masuk
+            </th>
+            <th>
+                Dibuat Oleh
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var itemB in Model.allBar)
+        {
+            //var c = 0; var cek = itemB.id_barang;
+            //int cek = itemB.id_barang, i = 0, c = 0, d=0;
+            //int[] cekAr = new int[50];
+            //cekAr[i] = cek;
+            //if (cekAr[i] == cekAr[i]) { c++; }
+            //i++;            
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => itemB.nama_barang)                    
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => itemB.nama_kategori)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => itemB.jumlah_barang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => itemB.jum_barang_masuk)
+                </td>
+                <td>
+                    @Convert.ToString(string.Format("{0:dd/MM/yyyy}", itemB.tanggal_masuk))
+                </td>
+
+
+                <td>
+                    @foreach (var itemS in Model.allSup)
+                    {
+                        @Html.DisplayFor(a => itemS.nama_supplier)
+                    }
+                </td>
+
+            </tr>
+
+            //if (cekAr[i] != cekAr[i-1]){<text> <tr style="border:groove;"></tr> </text>}
+            //Write(c);
+            //Write(i);
+            //Write(d);
+        }
+
+
+    </tbody>
+</table>
+
+
+
+
+

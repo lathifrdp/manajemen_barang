@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Suppliersite</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div>
+                    @Html.ActionLink("Manajemen Barang", "Index", "Suppliersite", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Profil", "Profil", "Suppliersite", new { @class = "navbar-brand" })                    
+                </div>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="navbar-right" style="margin-top:10px;">                    
+                        <li>
+                            @Html.ActionLink("Logout", "Logout", "Suppliersite", new { style = "font-size:20px;color:white;text-decoration:none;" })
+                        </li>                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Aplikasi Manajemen Barang</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
