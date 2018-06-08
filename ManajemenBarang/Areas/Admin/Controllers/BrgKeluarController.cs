@@ -16,8 +16,13 @@ namespace ManajemenBarang.Areas.Admin.Controllers
         // GET: Admin/BarangKeluar
         public ActionResult Index()
         {
-            List<spGetBarangKeluarJoin_Result> result = mod.getBarangKeluar();
-            return View(result);
+            if (Session["UserID"] != null)
+            {
+                List<spGetBarangKeluarJoin_Result> result = mod.getBarangKeluar();
+                return View(result);
+            }
+            return View("ErrorSession");
+            
         }
 
         //public ActionResult BarangKeluar()
@@ -28,9 +33,14 @@ namespace ManajemenBarang.Areas.Admin.Controllers
 
         public ActionResult Insert()
         {
-            list.getBarang = mod.getBarangList();
-            list.getUser = mod.getUser();
-            return View(list);
+            if (Session["UserID"] != null)
+            {
+                list.getBarang = mod.getBarangList();
+                list.getUser = mod.getUser();
+                return View(list);
+            }
+            return View("ErrorSession");
+            
         }
 
         public ActionResult InsertAction(spGetBarangKeluar_Result brg)
@@ -41,8 +51,12 @@ namespace ManajemenBarang.Areas.Admin.Controllers
 
         public ActionResult Delete(int? id)
         {
+            if (Session["UserID"] != null)
+            {
             BarangKeluar result = db.BarangKeluars.Find(id);
             return View(result);
+            }
+            return View("ErrorSession");
         }
 
         [HttpPost, ActionName("Delete")]

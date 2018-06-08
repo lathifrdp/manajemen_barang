@@ -16,16 +16,26 @@ namespace ManajemenBarang.Areas.Admin.Controllers
         // GET: Admin/BrgReturn
         public ActionResult Index()
         {
+            if (Session["UserID"] != null)
+            {
             List<spGetBarangReturnJoin_Result> result = mod.getBarangReturn();
             return View(result);
+            }
+            return View("ErrorSession");
+
         }
 
         public ActionResult Insert()
         {
+            if (Session["UserID"] != null)
+            {
             list.getBarang = mod.getBarangList();
             list.getUser = mod.getUser();
             list.getSupplier = mod.getSupplier();
             return View(list);
+            }
+            return View("ErrorSession");
+
         }
 
         public ActionResult InsertAction(spGetBarangReturn_Result brg)
@@ -36,8 +46,13 @@ namespace ManajemenBarang.Areas.Admin.Controllers
 
         public ActionResult Delete(int? id)
         {
+            if (Session["UserID"] != null)
+            {
             BarangReturn result = db.BarangReturns.Find(id);
             return View(result);
+            }
+            return View("ErrorSession");
+
         }
 
         [HttpPost, ActionName("Delete")]

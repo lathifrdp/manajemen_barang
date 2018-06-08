@@ -433,6 +433,10 @@
     <Content Include="Areas\Admin\Views\BrgReturn\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\BrgReturn\Index.cshtml" />
     <Content Include="Areas\Admin\Views\BrgReturn\Insert.cshtml" />
+    <Content Include="Areas\Admin\Views\Adminsite\ErrorSession.cshtml" />
+    <Content Include="Areas\Admin\Views\BrgKeluar\ErrorSession.cshtml" />
+    <Content Include="Areas\Admin\Views\BrgMasuk\ErrorSession.cshtml" />
+    <Content Include="Areas\Admin\Views\BrgReturn\ErrorSession.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

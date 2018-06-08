@@ -3,6 +3,8 @@
     ViewBag.Title = "Index";
 }
 
+
+
 <div>
     <div class="container">
         <div class="row">
@@ -12,16 +14,8 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12 margin-tb">
-                
-                <div class="pull-left">
-                    @Html.RouteLink("Kembali ke Dashboard", "Default",
-        new { action = "Index", controller = "Dashboard" })
-                </div>
-            </div>
-        </div>
-        
+        @if (Session["UserID"] != null)
+        {<text> Selamat Datang @Session["UserName"].ToString() </text>}
         <table class="table table-striped">
             <tr>
                 <th>
@@ -56,18 +50,18 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.jumlah_brg)
                     </td>
-                   
-                    <td>   
+
+                    <td>
                         @Html.DisplayFor(modelItem => item.nama_kat)
                     </td>
-                    
+
                     <td>
                         @Html.DisplayFor(modelItem => item.nama_sup)
                     </td>
                     @*<td>
                         @Html.DisplayFor(modelItem => item.deskripsi_brg)
                     </td>*@
-                    
+
                     <td>
                         @Html.ActionLink(
                         "Edit",

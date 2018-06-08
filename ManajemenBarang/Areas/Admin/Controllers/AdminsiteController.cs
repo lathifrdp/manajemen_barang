@@ -20,8 +20,12 @@ namespace ManajemenBarang.Areas.Admin.Controllers
         // GET: Admin/Adminsite
         public ActionResult Index()
         {
-            List<spGetBarangJoin_Result> result = mod.getBarang();
-            return View(result);
+            if (Session["UserID"] != null)
+            {
+                List<spGetBarangJoin_Result> result = mod.getBarang();
+                return View(result);
+            }
+            return View("ErrorSession");
         }
         //public ActionResult Index()
         //{
@@ -34,10 +38,15 @@ namespace ManajemenBarang.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
-            list.getEdit = mod.getEditResult(id);
-            list.getSupplier = mod.getSupplier();
-            list.getKategori = mod.getKategori();
-            return View(list);
+            if (Session["UserID"] != null)
+            {
+                list.getEdit = mod.getEditResult(id);
+                list.getSupplier = mod.getSupplier();
+                list.getKategori = mod.getKategori();
+                return View(list);
+            }
+            return View("ErrorSession");
+            
         }
 
         public ActionResult EditAction(spGetBarangBaru_Result brg)
@@ -48,8 +57,12 @@ namespace ManajemenBarang.Areas.Admin.Controllers
         
         public ActionResult Delete(int? id)
         {
-            Barang result = db.Barangs.Find(id);
-            return View(result);
+            if (Session["UserID"] != null)
+            {
+                Barang result = db.Barangs.Find(id);
+                return View(result);
+            }
+            return View("ErrorSession");
         }
 
         [HttpPost, ActionName("Delete")]
@@ -66,6 +79,12 @@ namespace ManajemenBarang.Areas.Admin.Controllers
         {
             List<spGetSupplierWhere_Result> result = mod.getSupplierWhere(id);
             return View(result);
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Login", "Dashboard", new { area = "" });
         }
 
     }
