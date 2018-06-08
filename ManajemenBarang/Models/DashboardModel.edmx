@@ -341,17 +341,6 @@
             <Parameter Name="desc" Mode="In" Type="String" />
             <Parameter Name="created" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="spBarangMasukNew">
-            <Parameter Name="id_brg" Mode="In" Type="Int32" />
-            <Parameter Name="id_sup" Mode="In" Type="Int32" />
-            <Parameter Name="id_kat" Mode="In" Type="Int32" />
-            <Parameter Name="nama_brg" Mode="In" Type="String" />
-            <Parameter Name="tgl" Mode="In" Type="DateTime" />
-            <Parameter Name="jml" Mode="In" Type="Int32" />
-            <Parameter Name="desc" Mode="In" Type="String" />
-            <Parameter Name="created" Mode="In" Type="Int32" />
-            <Parameter Name="kode_brg" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="spBarangReturn">
             <Parameter Name="id_brg" Mode="In" Type="Int32" />
             <Parameter Name="tgl" Mode="In" Type="DateTime" />
@@ -388,6 +377,17 @@
           </FunctionImport>
           <FunctionImport Name="spGetUser" ReturnType="Collection(dbStokModel.spGetUser_Result)" />
           <FunctionImport Name="spGetBarangBaru" ReturnType="Collection(dbStokModel.spGetBarangBaru_Result)" />
+          <FunctionImport Name="spBarangMasukNew">
+            <Parameter Name="id_brg" Mode="In" Type="Int32" />
+            <Parameter Name="id_sup" Mode="In" Type="Int32" />
+            <Parameter Name="id_kat" Mode="In" Type="Int32" />
+            <Parameter Name="nama_brg" Mode="In" Type="String" />
+            <Parameter Name="tgl" Mode="In" Type="DateTime" />
+            <Parameter Name="jml" Mode="In" Type="Int32" />
+            <Parameter Name="desc" Mode="In" Type="String" />
+            <Parameter Name="created" Mode="In" Type="Int32" />
+            <Parameter Name="kode_brg" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetUsup_Result">
           <Property Type="Int32" Name="id_user" Nullable="false" />
@@ -916,7 +916,6 @@
           <FunctionImportMapping FunctionImportName="CreateData" FunctionName="dbStokModel.Store.CreateData" />
           <FunctionImportMapping FunctionImportName="spBarangKeluar" FunctionName="dbStokModel.Store.spBarangKeluar" />
           <FunctionImportMapping FunctionImportName="spBarangMasukExist" FunctionName="dbStokModel.Store.spBarangMasukExist" />
-          <FunctionImportMapping FunctionImportName="spBarangMasukNew" FunctionName="dbStokModel.Store.spBarangMasukNew" />
           <FunctionImportMapping FunctionImportName="spBarangReturn" FunctionName="dbStokModel.Store.spBarangReturn" />
           <FunctionImportMapping FunctionImportName="spEditBarang" FunctionName="dbStokModel.Store.spEditBarang" />
           <FunctionImportMapping FunctionImportName="spGetBarang" FunctionName="dbStokModel.Store.spGetBarang">
@@ -1104,6 +1103,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spBarangMasukNew" FunctionName="dbStokModel.Store.spBarangMasukNew" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

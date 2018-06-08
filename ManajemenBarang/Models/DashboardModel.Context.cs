@@ -361,47 +361,6 @@ namespace ManajemenBarang.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spBarangMasukExist", id_brgParameter, tglParameter, jmlParameter, descParameter, createdParameter);
         }
     
-        public virtual int spBarangMasukNew(Nullable<int> id_brg, Nullable<int> id_sup, Nullable<int> id_kat, string nama_brg, Nullable<System.DateTime> tgl, Nullable<int> jml, string desc, Nullable<int> created, string kode_brg)
-        {
-            var id_brgParameter = id_brg.HasValue ?
-                new ObjectParameter("id_brg", id_brg) :
-                new ObjectParameter("id_brg", typeof(int));
-    
-            var id_supParameter = id_sup.HasValue ?
-                new ObjectParameter("id_sup", id_sup) :
-                new ObjectParameter("id_sup", typeof(int));
-    
-            var id_katParameter = id_kat.HasValue ?
-                new ObjectParameter("id_kat", id_kat) :
-                new ObjectParameter("id_kat", typeof(int));
-    
-            var nama_brgParameter = nama_brg != null ?
-                new ObjectParameter("nama_brg", nama_brg) :
-                new ObjectParameter("nama_brg", typeof(string));
-    
-            var tglParameter = tgl.HasValue ?
-                new ObjectParameter("tgl", tgl) :
-                new ObjectParameter("tgl", typeof(System.DateTime));
-    
-            var jmlParameter = jml.HasValue ?
-                new ObjectParameter("jml", jml) :
-                new ObjectParameter("jml", typeof(int));
-    
-            var descParameter = desc != null ?
-                new ObjectParameter("desc", desc) :
-                new ObjectParameter("desc", typeof(string));
-    
-            var createdParameter = created.HasValue ?
-                new ObjectParameter("created", created) :
-                new ObjectParameter("created", typeof(int));
-    
-            var kode_brgParameter = kode_brg != null ?
-                new ObjectParameter("kode_brg", kode_brg) :
-                new ObjectParameter("kode_brg", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spBarangMasukNew", id_brgParameter, id_supParameter, id_katParameter, nama_brgParameter, tglParameter, jmlParameter, descParameter, createdParameter, kode_brgParameter);
-        }
-    
         public virtual int spBarangReturn(Nullable<int> id_brg, Nullable<System.DateTime> tgl, Nullable<int> jml, string desc, Nullable<int> created)
         {
             var id_brgParameter = id_brg.HasValue ?
@@ -546,6 +505,47 @@ namespace ManajemenBarang.Models
         public virtual ObjectResult<spGetBarangBaru_Result> spGetBarangBaru()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetBarangBaru_Result>("spGetBarangBaru");
+        }
+    
+        public virtual int spBarangMasukNew(Nullable<int> id_brg, Nullable<int> id_sup, Nullable<int> id_kat, string nama_brg, Nullable<System.DateTime> tgl, Nullable<int> jml, string desc, Nullable<int> created, string kode_brg)
+        {
+            var id_brgParameter = id_brg.HasValue ?
+                new ObjectParameter("id_brg", id_brg) :
+                new ObjectParameter("id_brg", typeof(int));
+    
+            var id_supParameter = id_sup.HasValue ?
+                new ObjectParameter("id_sup", id_sup) :
+                new ObjectParameter("id_sup", typeof(int));
+    
+            var id_katParameter = id_kat.HasValue ?
+                new ObjectParameter("id_kat", id_kat) :
+                new ObjectParameter("id_kat", typeof(int));
+    
+            var nama_brgParameter = nama_brg != null ?
+                new ObjectParameter("nama_brg", nama_brg) :
+                new ObjectParameter("nama_brg", typeof(string));
+    
+            var tglParameter = tgl.HasValue ?
+                new ObjectParameter("tgl", tgl) :
+                new ObjectParameter("tgl", typeof(System.DateTime));
+    
+            var jmlParameter = jml.HasValue ?
+                new ObjectParameter("jml", jml) :
+                new ObjectParameter("jml", typeof(int));
+    
+            var descParameter = desc != null ?
+                new ObjectParameter("desc", desc) :
+                new ObjectParameter("desc", typeof(string));
+    
+            var createdParameter = created.HasValue ?
+                new ObjectParameter("created", created) :
+                new ObjectParameter("created", typeof(int));
+    
+            var kode_brgParameter = kode_brg != null ?
+                new ObjectParameter("kode_brg", kode_brg) :
+                new ObjectParameter("kode_brg", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spBarangMasukNew", id_brgParameter, id_supParameter, id_katParameter, nama_brgParameter, tglParameter, jmlParameter, descParameter, createdParameter, kode_brgParameter);
         }
     }
 }
