@@ -21,16 +21,6 @@
                         }
                     </select>
                 </div>
-                @*<div class="form-group">
-                    <label class="control-label">Supplier</label>
-                    <select name="id_sup" class="form-control" required>
-                        <option selected="selected" value="0">Pilih Supplier</option>
-                        @foreach (var itemB in Model.getSupplier)
-                        {
-                            <option value="@itemB.id_user">@itemB.nama_supplier</option>
-                        }
-                    </select>
-                </div>*@
                 <div class="form-group">
                     <label class="control-label">Tanggal</label>
                     <input name="tanggal_return" type="date" class="form-control" required autocomplete="off" />
@@ -49,14 +39,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label">Nama Operator</label>
-                    <select name="created_by" class="form-control" required>
-                        <option selected="selected" value="0">Pilih Nama</option>
-                        @foreach (var itemU in Model.getUser)
-                        {
-                            <option value="@itemU.id_user">@itemU.username</option>
-                        }
-                    </select>
+                    <input name="created_by" value="@Session["UserID"]" class="form-control" required autocomplete="off" type="hidden" />
                 </div>
 
                 <div class="form-group">

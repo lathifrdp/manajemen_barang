@@ -51,12 +51,7 @@ namespace ManajemenBarang.Areas.Admin.Controllers
 
         public ActionResult Delete(int? id)
         {
-            if (Session["UserID"] != null)
-            {
-            BarangKeluar result = db.BarangKeluars.Find(id);
-            return View(result);
-            }
-            return View("ErrorSession");
+            '
         }
 
         [HttpPost, ActionName("Delete")]
